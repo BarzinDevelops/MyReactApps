@@ -1,0 +1,24 @@
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.contacts{
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    
+}
+.cards-container{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 20%;
+    width: 50%;
+    border-bottom: 3px solid rgba(17, 75, 156, 0.25);
+    line-height: 1.6;
+}
