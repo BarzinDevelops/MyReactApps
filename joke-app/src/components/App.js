@@ -33,7 +33,7 @@ function App() {
   return (
     <div className="app-container">
       <div className="jokes-wrapper">
-        <h1 style={{color: "green", textAlign: "center", marginBottom: "20px", borderTop: "2px solid green", borderBottom: "2px solid green", padding: "10px 0"}}>This is Barry Jokes App</h1>
+        <h1  className='app-title'>This is Barry Jokes App</h1>
         <Jokes myJokes={myJokes.joke1}/>
         <Jokes myJokes={myJokes.joke2}/>
         <Jokes myJokes={myJokes.joke3}/>
