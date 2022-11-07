@@ -8,7 +8,9 @@ const productComponents = productData
 
   return (
     <div className="main-app-wrapper">
-      {productComponents}
+      <div className='all-products-wrapper'>
+        {productComponents}
+      </div>
     </div>
   );
 }
