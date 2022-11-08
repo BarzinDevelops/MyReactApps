@@ -1,4 +1,4 @@
-/*
+/* Assignment description:
 Let's practice props and mapping components on our todo list app!
 
 I've created a js file with some todos data in it, which I'm imported into this file. 
