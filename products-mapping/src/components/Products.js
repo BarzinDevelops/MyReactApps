@@ -11,9 +11,8 @@ const Products = (props) => {
             <div className='product-image'>
                 <img src="https://source.unsplash.com/100x100/?snacks"/>
             </div>
-{/* wWZzXlDpMog */}
             <div className='product-details'>
-                <p>Price: €{props.price}</p>
+                <p>Price: {props.price.toLocaleString("nl-NL", {style: "currency", currency: "EUR"})}</p>
                 <p>Description: {props.description}</p>
             </div>
 
