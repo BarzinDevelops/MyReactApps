@@ -20,7 +20,7 @@ class App extends Component {
     constructor(){
         super()
         this.state = {
-            todoList: todosData.map(todo => <TodoItem key={todo.id} todoItem={todo}/>)
+            todoList: todosData.map(todo => <TodoItem key={todo.id} item={todo}/>)
         }
     }
 
