@@ -14,7 +14,7 @@ load the imported `todosData` into state.
 // import React, { version } from "react"; // to see what react version you use.
 import TodoItem from "./TodoItem";
 import todosData from "../todosData";
-import React, {Component, component} from 'react';
+import React, {Component} from 'react';
 
 class App extends Component {
     constructor(){
@@ -30,7 +30,6 @@ class App extends Component {
                 <div className="todo-list">
                     {this.state.todoList}
                 </div>
-    
             </main>
         )
     }
