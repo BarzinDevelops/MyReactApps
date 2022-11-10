@@ -1,12 +1,16 @@
 /* Assignment description:
-In the previous iteration of this todo list app, we pulled in todos data 
-from a JSON file and mapped over it to display the todo items.
 
-Eventually we'll want to be able to modify the data, which will only happen 
-if we've "loaded" the data in to the component's state
+ * Let's make it so our checkbox can actually mark our todo as complete or incomplete!
+ * This challenge is a little more involved than some of the past ones. Check the comments 
+ * in the code for some help on accomplishing this one
+ * 
+ * Challenge: 
+ * 1. Create an event handler in the App component for when the checkbox is clicked (which is an `onChange` event)
+ *    a. This method will be the trickest part. Check the comments in the stubbed-out method below for some pseudocode to help guide you through this part
+ * 2. Pass the method down to the TodoItem component
+ * 3. In the TodoItem component, make it so when the `onChange` event happens, it calls the `handleChange` method and passes the id of the todo into the function
 
-Challenge: Change the <App /> component into a stateful class component and 
-load the imported `todosData` into state.
+
 */
 
 // ----------------------APP.js  starts here-----------------------------
@@ -20,15 +24,36 @@ class App extends Component {
     constructor(){
         super()
         this.state = {
-            todoList: todosData.map(todo => <TodoItem key={todo.id} item={todo}/>)
+            todos: todosData
         }
+        this.handleChange = this.handleChange.bind(this);
     }
 
+
+    handleChange(id) {
+        // 4. Update state so that the item with the given id flips `completed` from false to true (or vise versa)
+        this.setState(()=>{
+         const updatedItems = this.state.todos.map(item => {
+                if(item.id === id) item.completed = !item.completed;
+                return item
+            })
+            return {todos:updatedItems}
+        })
+    }
+
+
     render() {
+        const TodoItems = this.state.todos.map(item => 
+        <TodoItem 
+            key={item.id} 
+            item={item} 
+            handleChange={this.handleChange}
+        />)
+
         return (
             <main className="main-wrapper">
                 <div className="todo-list">
-                    {this.state.todoList}
+                    {TodoItems}
                 </div>
             </main>
         )
