@@ -32,11 +32,19 @@ class App extends Component {
 
     handleChange(id) {
         // 4. Update state so that the item with the given id flips `completed` from false to true (or vise versa)
-        this.setState(()=>{
-         const updatedItems = this.state.todos.map(item => {
-                if(item.id === id) item.completed = !item.completed;
+        this.setState((prevState)=>{
+         const updatedItems = prevState.todos.map(item => {
+                if(item.id === id) {
+                    return {
+                        ...item, //spred operator=> get all props of this object
+                        completed: !item.completed  //for prop 'completed' revers the value (if true than false and vice versa)
+                    }
+                }
                 return item
             })
+            //checking if prevState isn't changed compare to the update state!
+                // console.log('prevState => ',prevState.todos)
+                // console.log('updatedItems => ',updatedItems) 
             return {todos:updatedItems}
         })
     }
