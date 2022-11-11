@@ -1,5 +1,4 @@
 import React from "react"
-import todosData from '../todosData'
 
 const TodoItem = (props) =>{
     return (
