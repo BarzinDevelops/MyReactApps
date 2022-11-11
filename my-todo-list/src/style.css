@@ -61,3 +61,9 @@ input[type=checkbox] {
 input[type=checkbox]:focus {
   outline: 0;
 }
+
+.completed-task{
+  color: green; 
+  font-style: italic; 
+  text-decoration: line-through;
+}
