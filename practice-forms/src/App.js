@@ -19,7 +19,7 @@ class App extends React.Component {
     const {name, value, type, checked} = event.target
     type === "checkbox" ?   
               this.setState({
-                [name] :  {name} === "isFriendly" && checked,
+                [name] :  name === "isFriendly" && checked,
                 isFriendlyText: checked ?  "I seem to be a friendly person!" : "I seem to be an unfriendly person!"
               }) :  
               this.setState({ [name] :  value })
@@ -85,19 +85,18 @@ class App extends React.Component {
           </div>
           
 
-        <hr style={{width: "40%", margin: "10px 0"}}/>
+        <hr/>
 
        <fieldset className='results'>
         <legend>Results of filled/chosen fields:</legend>
         <span>
-          {this.state.firstName !=="" && this.state.lastName ==="" ? [<span>First Name: </span> ,this.state.firstName] : ""} 
-          {this.state.lastName !=="" && this.state.firstName ==="" ? [<span>Last Name: </span> ,this.state.lastName] : ""}
-          {this.state.firstName !=="" && this.state.lastName !=="" ? [<span>Full Name: </span> ,this.state.firstName, this.state.lastName] : ""}
-
+          {this.state.firstName !=="" && this.state.lastName ==="" ? [<span className='result-titles' key={'firstName'}>First Name: </span> ,this.state.firstName] : ""} 
+          {this.state.lastName !=="" && this.state.firstName ==="" ? [<span className='result-titles' key={'lastName'}>Last Name: </span> ,this.state.lastName] : ""}
+          {this.state.firstName !=="" && this.state.lastName !=="" ? [<span className='result-titles' key={'fullName'}>Full Name: </span> ,this.state.firstName, " ", this.state.lastName] : ""}
         </span>
-        <span> {this.state.isFriendlyText}</span>
-        <span className='comments'> {this.state.comments !=="" && `Comments:\n\t${this.state.comments}` } </span>
-        <span>{this.state.gender !== "" && `Gender: You are a ${this.state.gender}`} </span>
+        <span> {this.state.isFriendlyText !=="" && [<span className='result-titles' key={'friendlyOrNot'}>Friendly or not: </span>,this.state.isFriendlyText]}</span>
+        <span> {this.state.comments !=="" && [<span className='result-titles' key={'comments'}>Comments: </span>, this.state.comments]} </span>
+        <span>{this.state.gender !== "" && [<span className='result-titles' key={'comments'}>Comments: </span>, this.state.gender]} </span>
        </fieldset>
       </div>
     );
