@@ -14,15 +14,7 @@
   padding: 10px;
   gap: 5px;
 }
-.is-friendly{
-  display: inline-block;
-  width: 40%;
-  text-align: left;
 
-}
-input[type="checkbox"]{
-  width: 20px;
-}
 textarea, input{
   padding: 5px 10px;
   width: 40%;
@@ -51,9 +43,36 @@ button:focus {
   outline:0;
 }
 
+/* Checkbox */
+.is-friendly{
+  display: inline-block;
+  width: 40%;
+  text-align: left;
 
-
-fieldset{
-  padding: 10px;
 }
-legend{ padding: 5px;}
+input[type="checkbox"]{
+  width: 20px;
+}
+/* radio btns */
+.gender-wrapper{
+  /* border: 2px solid red; */
+  display: flex;
+  flex-direction: column;
+  /* gap: 5px; */
+}
+.gender{
+  /* border: 3px solid; */
+  display: flex;
+  padding: 5px;
+  gap: 5px;
+}
+input[type="radio"]{
+  width: 10px;
+}
+fieldset, legend{
+  padding: 5px;
+}
+.results{
+  display: flex;
+  flex-direction: column;
+}
