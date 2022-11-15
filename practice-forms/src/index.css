@@ -1,3 +1,10 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
 .main-div {
   /* border: 3px solid red; */
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -5,8 +12,25 @@
   flex-direction: column;
   align-items: flex-start;
   padding: 10px;
+  gap: 5px;
 }
+.is-friendly{
+  display: inline-block;
+  width: 40%;
+  text-align: left;
 
+}
+input[type="checkbox"]{
+  width: 20px;
+}
+textarea, input{
+  padding: 5px 10px;
+  width: 40%;
+
+}
+textarea, input:focus{
+  outline: none;
+}
 h1 {
   font-size: 3em;
 }
@@ -26,3 +50,10 @@ button:hover {
 button:focus {
   outline:0;
 }
+
+
+
+fieldset{
+  padding: 10px;
+}
+legend{ padding: 5px;}
