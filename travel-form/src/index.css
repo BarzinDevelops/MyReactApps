@@ -1,0 +1,55 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  width: 100%;
+  height: 100vh;
+}
+
+.main-wrapper{
+  border: 3px solid red;
+  height: 100vh;
+  padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+
+}
+.form-wrapper{
+  border: 3px solid blue;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+input:focus{
+  outline: none;
+}
+
+input[type="text"]{
+  padding: 5px;
+
+}
+
+label{
+  display: flex;
+  gap: 5px;
+}
+
+
+/* Results of filled elements: */
+
+.results{
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
