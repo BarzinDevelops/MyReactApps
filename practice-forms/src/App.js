@@ -9,7 +9,8 @@ class App extends React.Component {
       comments: "",
       isFriendly: false,
       isFriendlyText: "",
-      gender: ''
+      gender: "",
+      favColor: ""
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -83,6 +84,25 @@ class App extends React.Component {
             </label>
            </fieldset>
           </div>
+
+          <fieldset>
+            <legend>Favorite Color:</legend>
+            <div style={{padding: "10px",backgroundColor: this.state.favColor}}>
+                <select className='fav-color' style={{padding: "3px"}}
+                value={this.state.favColor}
+                name="favColor"
+                onChange={this.handleChange}
+                >
+                  <option value="white">--Choose One Color--</option>
+                  <option value="lightblue">Light Blue</option>
+                  <option value="rgb(19, 121, 107)">Green</option>
+                  <option value="rgba(92, 113, 141, 0.986)">Grey Purple</option>
+                  <option value="rgb(180, 93, 180)">Light Purple</option>
+                  <option value="yellow">Yellow</option>
+              </select>
+            </div>
+          </fieldset>
+          
           
 
         <hr/>
@@ -98,6 +118,7 @@ class App extends React.Component {
         <span> {this.state.comments !=="" && [<span className='result-titles' key={'comments'}>Comments: </span>, this.state.comments]} </span>
         <span>{this.state.gender !== "" && [<span className='result-titles' key={'comments'}>Comments: </span>, this.state.gender]} </span>
        </fieldset>
+
       </div>
     );
   }
