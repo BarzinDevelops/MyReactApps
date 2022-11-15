@@ -30,16 +30,17 @@ class App extends React.Component {
     this.state = {
       firstName: "",
       lastName: "",
+      gender: "",
     }
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(event){
-    const {name, value, type} = event.target;
+    const {name, value, type, checked} = event.target;
     
-    this.setState({
-      [name] : value
-    })
+    type === 'checkbox' ? 
+        this.setState({ [name] : checked }) : 
+        this.setState({ [name] : value })
   }
   render(){
     return (
@@ -65,7 +66,8 @@ class App extends React.Component {
               <input 
                 type="radio" 
                 name="gender" 
-                value={this.state.gender} 
+                value= "Male" 
+                checked={this.state.gender === "Male"}
                 onChange={this.handleChange}
               />
               Male
@@ -74,7 +76,8 @@ class App extends React.Component {
               <input 
                 type="radio" 
                 name="gender" 
-                value={this.state.gender} 
+                value= "Female" 
+                checked={this.state.gender === "Female"}
                 onChange={this.handleChange}
               />
               Female
@@ -83,8 +86,9 @@ class App extends React.Component {
         <fieldset className='results'>
           <legend>Results of filled form:</legend>
 
-          <span>{this.state.firstName}</span>
-          <span>{this.state.lastName}</span>
+          <span>First Name: <b>{this.state.firstName}</b></span>
+          <span>Last Name: <b>{this.state.lastName}</b></span>
+          <span>Chosen Gender: <b>{this.state.gender}</b></span>
         </fieldset>
   
   
