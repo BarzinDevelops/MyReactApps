@@ -32,6 +32,7 @@ class App extends React.Component {
       lastName: "",
       age: "",
       gender: "",
+      chosenLocation: "",
     }
     this.handleChange = this.handleChange.bind(this);
   }
@@ -103,7 +104,16 @@ class App extends React.Component {
 
             {/*{/*------------- Location: (select boxes with minimum 3 countries){/*-------------*/}
 
-
+            <select className='country-select'
+              name="chosenLocation"
+              value={this.state.chosenLocation}
+              onChange={this.handleChange}>
+              <option>✈️Choose a destination✈️</option>
+              <option value="prague"> Prague, Czech Republic</option>
+              <option value="rome">Rome, Italy</option>
+              <option value="santorini">Santorini, Greece</option>
+              <option value="paris">Paris, France</option>
+            </select>
 
 
 
@@ -120,6 +130,7 @@ class App extends React.Component {
           <span>Last Name: <b>{this.state.lastName}</b></span>
           <span>Age: <b>{this.state.age}</b></span>
           <span>Chosen Gender: <b>{this.state.gender}</b></span>
+          <span>Chosen Destination: <b>{this.state.chosenLocation}</b></span>
         </fieldset>
   
   
