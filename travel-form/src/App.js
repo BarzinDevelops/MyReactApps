@@ -1,4 +1,3 @@
-
 /**
  * Challenge: Wire up the partially-finished travel form so that it works!
  * Remember to use the concept of controlled forms
@@ -22,11 +21,11 @@ Each element of the form should be given a name attribute so you can access the 
 There should also be a button at the end of the form to submit it.
  */
 
-import React from 'react'
+import React from "react";
 
 class App extends React.Component {
-  constructor(){
-    super()
+  constructor() {
+    super();
     this.state = {
       firstName: "",
       lastName: "",
@@ -36,153 +35,189 @@ class App extends React.Component {
       vegetarian: false,
       kosher: false,
       lactoseFree: false,
-      
-    }
+      className: "submit",
+    };
     this.handleChange = this.handleChange.bind(this);
+    this.handleMouseEvent = this.handleMouseEvent.bind(this);
   }
 
-  handleChange(event){
-    const {name, value, type, checked} = event.target;
-    
-    type === 'checkbox' ? 
-        this.setState({ [name] : checked }) :
-        this.setState({ [name] : value })
+  handleChange(event) {
+    const { name, value, type, checked } = event.target;
+    type === "checkbox"
+      ? this.setState({ [name]: checked })
+      : this.setState({ [name]: value });
   }
-  render(){
+
+  handleMouseEvent(event) {
+    event.type === "mousedown" ? this.setState({ className: "submit-active" }): this.setState({ className: "submit" })
+  }
+
+  render() {
     return (
       <div className="main-wrapper">
         <h1>Passenger Booking Form:</h1>
         <form className="form-wrapper">
-           {/* {/*-------------First Name: {/*-------------*/}
-            <input 
-              type="text" 
-              name="firstName" 
-              value={this.state.firstName} 
-              placeholder="Your First Name"
-              onChange={this.handleChange}
-            />
-            {/*{/*------------- Last Name: {/*-------------*/}
-            <input 
-              type="text" 
-              name="lastName" 
-              value={this.state.lastName} 
-              placeholder="Your Last Name"
-              onChange={this.handleChange}
-            />
-            {/*{/*------------- Age:{/*------------- */}
+          {/* {/*-------------First Name: {/*-------------*/}
+          <input
+            type="text"
+            name="firstName"
+            value={this.state.firstName}
+            placeholder="Your First Name"
+            onChange={this.handleChange}
+          />
+          {/*{/*------------- Last Name: {/*-------------*/}
+          <input
+            type="text"
+            name="lastName"
+            value={this.state.lastName}
+            placeholder="Your Last Name"
+            onChange={this.handleChange}
+          />
+          {/*{/*------------- Age:{/*------------- */}
 
-            <input
-              type='number'
-              name='age'
-              placeholder='Your Age'
-              value={this.state.age}
-              onChange={this.handleChange}
+          <input
+            type="number"
+            name="age"
+            placeholder="Your Age"
+            value={this.state.age}
+            onChange={this.handleChange}
+          />
+
+          {/*------------- gender: -------------------*/}
+
+          <fieldset className="results">
+            <legend>Gender</legend>
+            <label>
+              <input
+                type="radio"
+                name="gender"
+                value="Male"
+                checked={this.state.gender === "Male"}
+                onChange={this.handleChange}
               />
+              Male
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="gender"
+                value="Female"
+                checked={this.state.gender === "Female"}
+                onChange={this.handleChange}
+              />
+              Female
+            </label>
+          </fieldset>
 
-            {/*------------- gender: -------------------*/}
+          {/*{/*------------- Location: (select boxes with minimum 3 countries){/*-------------*/}
 
-            <fieldset className='results'>
-              <legend>Gender</legend>
-              <label>
-                <input 
-                  type="radio" 
-                  name="gender" 
-                  value= "Male" 
-                  checked={this.state.gender === "Male"}
-                  onChange={this.handleChange}
-                />
-                Male
-              </label>
-              <label>
-                <input 
-                  type="radio" 
-                  name="gender" 
-                  value= "Female" 
-                  checked={this.state.gender === "Female"}
-                  onChange={this.handleChange}
-                />
-                Female
-              </label>
-            </fieldset>
+          <select
+            className="country-select"
+            name="chosenLocation"
+            value={this.state.chosenLocation}
+            onChange={this.handleChange}
+          >
+            <option>✈️Choose a destination✈️</option>
+            <option value="prague"> Prague, Czech Republic</option>
+            <option value="rome">Rome, Italy</option>
+            <option value="santorini">Santorini, Greece</option>
+            <option value="paris">Paris, France</option>
+          </select>
 
+          {/* {/*-------------dietary restrictions (check boxes for vegetarian, kosher, lactose free): {/*-------------*/}
 
-            {/*{/*------------- Location: (select boxes with minimum 3 countries){/*-------------*/}
+          <fieldset className="results">
+            <legend>Dietary restrictions:</legend>
+            <label>
+              <input
+                type="checkbox"
+                name="vegetarian"
+                checked={this.state.vegetarian}
+                onChange={this.handleChange}
+              />
+              Vegetarian
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="kosher"
+                checked={this.state.kosher}
+                onChange={this.handleChange}
+              />
+              kosher
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="lactoseFree"
+                checked={this.state.lactoseFree}
+                onChange={this.handleChange}
+              />
+              lactoseFree
+            </label>
+          </fieldset>
 
-            <select className='country-select'
-              name="chosenLocation"
-              value={this.state.chosenLocation}
-              onChange={this.handleChange}>
-              <option>✈️Choose a destination✈️</option>
-              <option value="prague"> Prague, Czech Republic</option>
-              <option value="rome">Rome, Italy</option>
-              <option value="santorini">Santorini, Greece</option>
-              <option value="paris">Paris, France</option>
-            </select>
+          {/*------------- Results of filled in / chosen options:---------*/}
 
+          <fieldset className="results">
+            <legend>Results of filled form:</legend>
 
-
-            {/* {/*-------------dietary restrictions (check boxes for vegetarian, kosher, lactose free): {/*-------------*/}
-
-            <fieldset className='results'>
-              <legend>Dietary restrictions:</legend>
-              <label>
-                <input
-                  type="checkbox"
-                  name="vegetarian"
-                  checked={this.state.vegetarian}
-                  onChange={this.handleChange}  
-                />
-                Vegetarian
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  name="kosher"
-                  checked={this.state.kosher}
-                  onChange={this.handleChange}  
-                />
-                kosher
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  name="lactoseFree"
-                  checked={this.state.lactoseFree}
-                  onChange={this.handleChange}  
-                />
-                lactoseFree
-              </label>
-
-            </fieldset>
-        {/* </form> */}
-
-        {/*------------- Results of filled in / chosen options:---------*/}
-        
-        <fieldset className='results'>
-          <legend>Results of filled form:</legend>
-
-          <span>First Name: <b>{this.state.firstName}</b></span>
-          <span>Last Name: <b>{this.state.lastName}</b></span>
-          <span>Age: <b>{this.state.age}</b></span>
-          <span>Chosen Gender: <b>{this.state.gender}</b></span>
-          <span>Chosen Destination: <b>{this.state.chosenLocation}</b></span>
-          <span>Chosen Dietary: <b>
-              {
-                [ 
+            <span>
+              First Name: <b>{this.state.firstName}</b>
+            </span>
+            <span>
+              Last Name: <b>{this.state.lastName}</b>
+            </span>
+            <span>
+              Age: <b>{this.state.age}</b>
+            </span>
+            <span>
+              Chosen Gender: <b>{this.state.gender}</b>
+            </span>
+            <span>
+              Chosen Destination: <b>{this.state.chosenLocation}</b>
+            </span>
+            <span>
+              Chosen Dietary:{" "}
+              <b>
+                {[
                   this.state.vegetarian && "vegetarian",
                   this.state.kosher && "kosher",
-                  this.state.lactoseFree && "lactose free"
-                ].filter(element => element ).join(', ')
-              }
-          </b></span>
+                  this.state.lactoseFree && "lactose free",
+                ]
+                  .filter((element) => element)
+                  .join(", ")}
+              </b>
+            </span>
+          </fieldset>
+          {/* ---------------Submit--------------- */}
 
-        </fieldset>
-  
+          <button
+            name="submit-btn"
+            className={this.state.className}
+            onMouseDown={this.handleMouseEvent}
+            onMouseUp={this.handleMouseEvent}
+            onClick={()=>    
+              alert(`
+                    First name: ${this.state.firstName}
+                    Last name: ${this.state.lastName}
+                    Age: ${this.state.age}
+                    Gender: ${this.state.gender}
+                    Location: ${this.state.chosenLocation}
+                    Dietary restrictions: ${
+                      [
+                        this.state.vegetarian && "vegetarian",
+                        this.state.kosher && "kosher",
+                        this.state.lactoseFree && "lactose free",
+                      ].filter((element) => element).join(", ")}
+                  `)
+            }>
+            Send Form
+          </button>
         </form>
       </div>
     );
   }
-
 }
 
 export default App;
