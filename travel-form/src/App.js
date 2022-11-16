@@ -30,6 +30,7 @@ class App extends React.Component {
     this.state = {
       firstName: "",
       lastName: "",
+      age: "",
       gender: "",
     }
     this.handleChange = this.handleChange.bind(this);
@@ -47,47 +48,77 @@ class App extends React.Component {
       <div className="main-wrapper">
         <h1>Passenger Booking Form:</h1>
         <form className="form-wrapper">
+           {/* {/*-------------First Name: {/*-------------*/}
             <input 
               type="text" 
               name="firstName" 
               value={this.state.firstName} 
-              placeholder="First Name"
+              placeholder="Your First Name"
               onChange={this.handleChange}
             />
+            {/*{/*------------- Last Name: {/*-------------*/}
             <input 
               type="text" 
               name="lastName" 
               value={this.state.lastName} 
-              placeholder="Last Name"
+              placeholder="Your Last Name"
               onChange={this.handleChange}
             />
-            {/* gender: */}
-            <label>
-              <input 
-                type="radio" 
-                name="gender" 
-                value= "Male" 
-                checked={this.state.gender === "Male"}
-                onChange={this.handleChange}
+            {/*{/*------------- Age:{/*------------- */}
+
+            <input
+              type='number'
+              name='age'
+              placeholder='Your Age'
+              value={this.state.age}
+              onChange={this.handleChange}
               />
-              Male
-            </label>
-            <label>
-              <input 
-                type="radio" 
-                name="gender" 
-                value= "Female" 
-                checked={this.state.gender === "Female"}
-                onChange={this.handleChange}
-              />
-              Female
-            </label>
+
+            {/*------------- gender: -------------------*/}
+
+            <fieldset className='results'>
+              <legend>Gender</legend>
+              <label>
+                <input 
+                  type="radio" 
+                  name="gender" 
+                  value= "Male" 
+                  checked={this.state.gender === "Male"}
+                  onChange={this.handleChange}
+                />
+                Male
+              </label>
+              <label>
+                <input 
+                  type="radio" 
+                  name="gender" 
+                  value= "Female" 
+                  checked={this.state.gender === "Female"}
+                  onChange={this.handleChange}
+                />
+                Female
+              </label>
+            </fieldset>
+
+
+            {/*{/*------------- Location: (select boxes with minimum 3 countries){/*-------------*/}
+
+
+
+
+
+            {/* {/*-------------dietary restrictions (check boxes for vegetarian, kosher, lactose free): {/*-------------*/}
+
+
         </form>
+
+        {/*------------- Results of filled in / chosen options:---------*/}
         <fieldset className='results'>
           <legend>Results of filled form:</legend>
 
           <span>First Name: <b>{this.state.firstName}</b></span>
           <span>Last Name: <b>{this.state.lastName}</b></span>
+          <span>Age: <b>{this.state.age}</b></span>
           <span>Chosen Gender: <b>{this.state.gender}</b></span>
         </fieldset>
   
