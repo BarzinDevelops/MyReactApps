@@ -33,6 +33,10 @@ class App extends React.Component {
       age: "",
       gender: "",
       chosenLocation: "",
+      vegetarian: false,
+      kosher: false,
+      lactoseFree: false,
+      
     }
     this.handleChange = this.handleChange.bind(this);
   }
@@ -41,7 +45,7 @@ class App extends React.Component {
     const {name, value, type, checked} = event.target;
     
     type === 'checkbox' ? 
-        this.setState({ [name] : checked }) : 
+        this.setState({ [name] : checked }) :
         this.setState({ [name] : value })
   }
   render(){
@@ -119,10 +123,41 @@ class App extends React.Component {
 
             {/* {/*-------------dietary restrictions (check boxes for vegetarian, kosher, lactose free): {/*-------------*/}
 
+            <fieldset className='results'>
+              <legend>Dietary restrictions:</legend>
+              <label>
+                <input
+                  type="checkbox"
+                  name="vegetarian"
+                  checked={this.state.vegetarian}
+                  onChange={this.handleChange}  
+                />
+                Vegetarian
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  name="kosher"
+                  checked={this.state.kosher}
+                  onChange={this.handleChange}  
+                />
+                kosher
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  name="lactoseFree"
+                  checked={this.state.lactoseFree}
+                  onChange={this.handleChange}  
+                />
+                lactoseFree
+              </label>
 
-        </form>
+            </fieldset>
+        {/* </form> */}
 
         {/*------------- Results of filled in / chosen options:---------*/}
+        
         <fieldset className='results'>
           <legend>Results of filled form:</legend>
 
@@ -131,9 +166,19 @@ class App extends React.Component {
           <span>Age: <b>{this.state.age}</b></span>
           <span>Chosen Gender: <b>{this.state.gender}</b></span>
           <span>Chosen Destination: <b>{this.state.chosenLocation}</b></span>
+          <span>Chosen Dietary: <b>
+              {
+                [ 
+                  this.state.vegetarian && "vegetarian",
+                  this.state.kosher && "kosher",
+                  this.state.lactoseFree && "lactose free"
+                ].filter(element => element ).join(', ')
+              }
+          </b></span>
+
         </fieldset>
   
-  
+        </form>
       </div>
     );
   }
