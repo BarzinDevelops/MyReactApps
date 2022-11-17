@@ -36,26 +36,28 @@ class MemeGenerator extends Component{
         return(
            <div>
             <form className='meme-form'>
-                {
-                        /**
-                         * Create 2 input fields, one for the topText and one for the bottomText
-                         * Remember that these will be "controlled forms", so make sure to add
-                         * all the attributes you'll need for that to work
-                         */
-                }
                 <input 
                     type="tenxt"
                     name='topText' 
+                    placeholder='Top Text'
                     value={this.state.topText} 
-                    onChange={this.handleChange}></input>
+                    onChange={this.handleChange}
+                />
                 <input 
                     type="tenxt"
                     name='bottomText' 
+                    placeholder='Bottom Text'
                     value={this.state.bottomText} 
-                    onChange={this.handleChange}></input>
+                    onChange={this.handleChange}
+                />
+                <button>GEN</button>
             </form>
-            <p>{this.state.topText}</p>
-            <p>{this.state.bottomText}</p>
+            <div className='meme'>
+                <img src={this.state.randomImg} alt="" />
+                <h2 className="top">{this.state.topText}</h2>
+                <h2 className="bottom">{this.state.bottomText}</h2>
+            </div>
+            
            </div>
         )
     }
