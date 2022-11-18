@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Header from './Header'
+// import Header from './Header'
 
 
 class MemeGenerator extends Component{
@@ -12,15 +12,17 @@ class MemeGenerator extends Component{
             allMemeImgs: []
         }
         this.handleChange = this.handleChange.bind(this)
+        this.handleClick = this.handleClick.bind(this)
     }
 
     componentDidMount(){
         fetch("https://api.imgflip.com/get_memes")
             .then(response => response.json())
             .then(response => {
-                console.log(response)
+                // console.log(response.data.memes.length)
                 this.setState({
                     allMemeImgs : response.data.memes
+                    
                 })
             })
     }
@@ -30,6 +32,13 @@ class MemeGenerator extends Component{
         this.setState({
             [name] : value
         })
+    }
+
+    handleClick(event){
+        event.preventDefault();
+        const randomIndex = Math.floor(Math.random() * this.state.allMemeImgs.length)
+        const randChosenImg = this.state.allMemeImgs[randomIndex].url
+        this.setState({ randomImg: randChosenImg})
     }
     
     render() {
@@ -50,7 +59,7 @@ class MemeGenerator extends Component{
                     value={this.state.bottomText} 
                     onChange={this.handleChange}
                 />
-                <button>GEN</button>
+                <button onClick={this.handleClick}>GEN</button>
             </form>
             <div className='meme'>
                 <img src={this.state.randomImg} alt="" />
